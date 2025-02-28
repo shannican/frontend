@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh; 
+}
+
+#candidate-header{
+  color: rgb(42, 42, 42);
+  font-weight: 600;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #6a0dad;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.section-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #555;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+  color: #444;
+}
+
+.menu-item:hover, .active {
+  background-color: #6a0dad;
+  color: white;
+  border-radius: 5px;
+}
+
+.logout {
+  color: red;
+}
+
+.candidates-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background-color: #6a0dad;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.table-container {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-body{
+  color:black
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #6a0dad;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: start !important;
+  border-bottom: 1px solid #ddd;
+}
+
+.edit-btn {
+  background-color: green;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.action-cell {
+  position: relative;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: black;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.menu-dropdown .edit-btn,
+.menu-dropdown .delete-btn {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.menu-dropdown .edit-btn {
+  color: green;
+}
+
+.menu-dropdown .delete-btn {
+  color: red;
+}
+
+.menu-dropdown .edit-btn:hover,
+.menu-dropdown .delete-btn:hover {
+  background: #f0f0f0;
+}
+
+.status-filter {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.status-filter:focus {
+  outline: none;
+  border-color: #6a0dad;
+}
