@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaEllipsisV } from "react-icons/fa";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 import API from "../api";
 import "./EmployeesPage.css";
 import EditEmployeeModal from "../components/EditEmployeeModal";
