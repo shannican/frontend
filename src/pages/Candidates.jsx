@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { FaEllipsisV } from "react-icons/fa";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/Sidebar.jsx";
 import API from "../api";
 import AddCandidateModal from "../components/AddCandidatesModel";
 import { downloadResume } from "../api/candidateService";
