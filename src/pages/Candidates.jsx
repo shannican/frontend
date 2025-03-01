@@ -10,7 +10,7 @@ const Candidates = () => {
   const [candidates, setCandidates] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
-  const menuRef = useRef(null); 
+  const menuRef = useRef(null);
 
   useEffect(() => {
     fetchCandidates();
@@ -33,7 +33,6 @@ const Candidates = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
-      // Update status in UI
       setCandidates((prevCandidates) =>
         prevCandidates.map((candidate) =>
           candidate._id === candidateId ? { ...candidate, status: newStatus } : candidate
@@ -43,6 +42,35 @@ const Candidates = () => {
       console.error("Error updating status:", error);
     }
   };
+
+  const handleDelete = async (candidateId) => {
+    if (!window.confirm("Are you sure you want to delete this candidate?")) return;
+  
+    try {
+      console.log(`Sending DELETE request for Candidate ID: ${candidateId}`);
+  
+      const response = await API.delete(`/candidates/${candidateId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+  
+      console.log("Delete API Response:", response);
+  
+      if (response.status === 200 || response.status === 204) {
+        console.log("Candidate successfully deleted!");
+        setCandidates((prevCandidates) => prevCandidates.filter((c) => c._id !== candidateId));
+        setOpenMenu(null);
+      } else {
+        console.error("Error deleting candidate:", response.data);
+        alert("Failed to delete candidate. Please try again.");
+      }
+    } catch (error) {
+      console.error("Delete API error:", error.response || error);
+      alert(`Delete Failed: ${error.response?.data?.msg || "Check your connection."}`);
+    }
+  };
+  
+  
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -130,7 +158,9 @@ const Candidates = () => {
                           ) : (
                             <span className="no-resume">No Resume</span>
                           )}
-                          <button className="delete-btn">Delete</button>
+                          <button className="delete-btn" onClick={() => handleDelete(candidate._id)}>
+                            Delete
+                          </button>
                         </div>
                       )}
                     </td>

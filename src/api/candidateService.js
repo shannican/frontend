@@ -1,5 +1,20 @@
 import API from "../api";
 
+// Candidates ko fetch karne ka function (setCandidates ko parameter me pass karna hoga)
+export const fetchCandidates = async (setCandidates) => {
+  try {
+    const data = await getCandidates();
+    if (Array.isArray(data)) {
+      setCandidates(data);
+    } else {
+      console.error("Unexpected API response format", data);
+    }
+  } catch (error) {
+    console.error("Error fetching candidates:", error);
+  }
+};
+
+// Candidates ko API se fetch karne ka function
 export const getCandidates = async () => {
   try {
     const { data } = await API.get("/candidates", {
@@ -12,6 +27,7 @@ export const getCandidates = async () => {
   }
 };
 
+// Resume download karne ka function
 export const downloadResume = async (candidateId) => {
   try {
     const response = await API.get(`/candidates/${candidateId}/resume`, {
